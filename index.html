@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assetsimages/style.css">   
+    <title>Timed Java Script Quiz Game</title>
 </head>
+
 <body>
-<div id= "start-container"></div>
-<div id= "quiz-game">
-    <p id="timer">20</p>
-</div>
-<div id= "high-scroes"></div>
+    <h1>Welcome to Matt's Amazing Java Script Game!</h1>
+    
+    <a href="scores.html">View Highscores</a>
+    
+    <div id="wrapper">
+        <!-- Div for timer -->
+        <div id="currentTime"></div>
+        <!-- Div for quiz content -->
+        <div id="questionsDiv">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Answer these random trivia questions as quickly as possible before the time runs out. Wrong answers will deduct 10 seconds from your score. Good luck!
+                </p>
+            <ul id="choicesUl"></ul>
+            <!-- Buttons -->
+            <button id="startTime">Start Quiz</button>
+        </div>
 
-
-
-    <a href="scores.html"></a>
-    <!-- <script src="assets/js/questions.js"></script>
-    <script src="assets/js/logic.js"></script> -->
-    <script src="assets/js/project.js"></script>
+    </div>
+    <script src="assetsimages/questions.js"></script>
+   
 </body>
 </html>
