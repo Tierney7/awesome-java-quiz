@@ -1,13 +1,13 @@
 var questions = [
     {
-        title: "Who is the only division 1 basketball program to win a national championship in the state of illinois?:",
-        choices: ["Depaul", "Loyola Chicago", "Illinois", "Northwestern"],
-        answer: "Loyola Chicago"
+        title: "A Function Associated With An object is Called:",
+        choices: ["Function", "Link", "Method", "None"],
+        answer: "Method"
     },
     {
-        title: "Which state has a population of more than one million?",
-        choices: ["Vermont", "Wyoming", "Alaska", "Rhode Island"],
-        answer: "Rhode Island"
+        title: "JavaScript File Has An Extension of:",
+        choices: [".Java", ".Js", ".javascript", ".xml"],
+        answer: ".Js"
     },
     {
         title: "How many championships does Bill Russell have?:",
