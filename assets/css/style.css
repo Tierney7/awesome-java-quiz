@@ -10,23 +10,43 @@ font-family:'Bangers', 'Courier New', Courier, monospace;
         }
         
         p {
-          color: white
+          color: white;
+          font-size: 25px;
+          
         }
-            
+/*             
         a {
           position: absolute;
-          left: 40%;
+          
           font-size: 30px;
           color: white;
+          justify-content: center;
+          
+        
+
+        } */
+
+        #highScore {
+            width: 100%;
+            color:white;
+            font-size: 30px;
+text-align: center;
         }
 
+#wrapperstyle {
+    width: 100%;
+}
+
+
+
         #wrapper {
-          position: absolute;
-          left: 33%;
+          
+         
           top: 20%;
           width: 500px;
           height: 500px;
           border: 5px solid darkred;
+          margin: auto;
       
       }
       #startTime {
@@ -95,7 +115,7 @@ font-family:'Bangers', 'Courier New', Courier, monospace;
       h1 {
           text-align: center;
          
-          justify-content: center;
+          
       }
       li {
           background-color: darkred;
