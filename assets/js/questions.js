@@ -1,5 +1,4 @@
- /* Created and coded by Abhilash Narayan */  
- /* Quiz source: w3schools.com */  
+
  var quiz = {  
     "JS": [  
       {  
@@ -118,8 +117,8 @@
     }  
     this.checkAnswer = function (option) {  
       var answer = quiz.JS[this.currentque].answer;  
-      option = option.replace(/</g, "&lt;")  //for <  
-      option = option.replace(/>/g, "&gt;")  //for >  
+      option = option.replace(/</g, "&lt;")    
+      option = option.replace(/>/g, "&gt;")  
       option = option.replace(/"/g, "&quot;")  
       if (option == quiz.JS[this.currentque].answer) {  
         if (quiz.JS[this.currentque].score == "") {  
@@ -140,7 +139,7 @@
   $(document).ready(function () {  
     jsq.displayQuiz(0);  
     $('#question-options').on('change', 'input[type=radio][name=option]', function (e) {  
-      //var radio = $(this).find('input:radio');  
+       
       $(this).prop("checked", true);  
       selectedopt = $(this).val();  
     });  
@@ -158,4 +157,39 @@
       jsq.checkAnswer(selectedopt);  
     }  
     jsq.changeQuestion(-1);  
-  });  
+
+   
+    
+  });
+
+  var score = 0;
+  var questionIndex = 0;
+  
+
+  var currentTime = document.querySelector("#currentTime");
+  var timer = document.querySelector("#startTime");
+ 
+ 
+  var secondsLeft = 76;
+  var holdInterval = 0;
+  var penalty = 10;
+  var ulCreate = document.createElement("ul");
+
+  timer.addEventListener("click", function () {
+
+      if (holdInterval === 0) {
+          holdInterval = setInterval(function () {
+              secondsLeft--;
+              currentTime.textContent = "Time: " + secondsLeft;
+  
+              if (secondsLeft <= 0) {
+                  clearInterval(holdInterval);
+                  allDone();
+                  currentTime.textContent = "Time is up!";
+              }
+          }, 1000);
+      }
+      
+  });
+
+  
