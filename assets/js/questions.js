@@ -1,4 +1,22 @@
-var questions = [
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
+
+function buildQuiz(){}
+function showResults(){}
+
+buildQuiz();
+
+output.push(
+    `<div class="slide">
+      <div class="question"> ${currentQuestion.question} </div>
+      <div class="answers"> ${answers.join("")} </div>
+    </div>`
+  );
+
+submitButton.addEventListener('click', showResults);
+
+const myQuestions = [
     {
         title: "A Function Associated With An object is Called:",
         choices: ["Function", "Link", "Method", "None"],
@@ -27,172 +45,109 @@ var questions = [
 
 ];
 
-var score = 0;
-var questionIndex = 0;
+function buildQuiz(){
 
-
-var currentTime = document.querySelector("#currentTime");
-var timer = document.querySelector("#startTime");
-var questionsDiv = document.querySelector("#questionsDiv");
-var wrapper = document.querySelector("#wrapper");
-
-
-var secondsLeft = 76;
-
-var holdInterval = 0;
-
-var penalty = 10;
-
-var ulCreate = document.createElement("ul");
-
-
-timer.addEventListener("click", function () {
-   
-    if (holdInterval === 0) {
-        holdInterval = setInterval(function () {
-            secondsLeft--;
-            currentTime.textContent = "Time: " + secondsLeft;
-
-            if (secondsLeft <= 0) {
-                clearInterval(holdInterval);
-                allDone();
-                currentTime.textContent = "Time's up!";
-            }
-        }, 1000);
-    }
-    render(questionIndex);
-});
-
-
-function render(questionIndex) {
-   
-    questionsDiv.innerHTML = "";
-    ulCreate.innerHTML = "";
-   
-    for (var i = 0; i < questions.length; i++) {
-       
-        var userQuestion = questions[questionIndex].title;
-        var userChoices = questions[questionIndex].choices;
-        questionsDiv.textContent = userQuestion;
-    }
-   
-    userChoices.forEach(function (newItem) {
-        var listItem = document.createElement("li");
-        listItem.textContent = newItem;
-        questionsDiv.appendChild(ulCreate);
-        ulCreate.appendChild(listItem);
-        listItem.addEventListener("click", (compare));
-    })
-}
-
-function compare(event) {
-    var element = event.target;
-
-    if (element.matches("li")) {
-
-        var createDiv = document.createElement("div");
-        createDiv.setAttribute("id", "createDiv");
-       
-        if (element.textContent == questions[questionIndex].answer) {
-            score++;
-            createDiv.textContent = "Correct! The answer is:  " + questions[questionIndex].answer;
-            
-        } else {
-           
-            secondsLeft = secondsLeft - penalty;
-            createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].answer;
-        }
-
-    }
+    const previousButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+    const output = [];
   
-    questionIndex++;
-
-    if (questionIndex >= questions.length) {
-       
-        allDone();
-        createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
-    } else {
-        render(questionIndex);
-    }
-    questionsDiv.appendChild(createDiv);
-
-}
-
-function allDone() {
-    questionsDiv.innerHTML = "";
-    currentTime.innerHTML = "";
-
-    
-    var createH1 = document.createElement("h1");
-    createH1.setAttribute("id", "createH1");
-    createH1.textContent = "All Done!"
-
-    questionsDiv.appendChild(createH1);
-
-    
-    var createP = document.createElement("p");
-    createP.setAttribute("id", "createP");
-
-    questionsDiv.appendChild(createP);
-
-
-    if (secondsLeft >= 0) {
-        var timeRemaining = secondsLeft;
-        var createP2 = document.createElement("p");
-        clearInterval(holdInterval);
-        createP.textContent = "Your final score is: " + timeRemaining;
-
-        questionsDiv.appendChild(createP2);
-    }
-
-   
-    var createLabel = document.createElement("label");
-    createLabel.setAttribute("id", "createLabel");
-    createLabel.textContent = "Enter your initials: ";
-
-    questionsDiv.appendChild(createLabel);
-
-    
-    var createInput = document.createElement("input");
-    createInput.setAttribute("type", "text");
-    createInput.setAttribute("id", "initials");
-    createInput.textContent = "";
-
-    questionsDiv.appendChild(createInput);
-
-    
-    var createSubmit = document.createElement("button");
-    createSubmit.setAttribute("type", "submit");
-    createSubmit.setAttribute("id", "Submit");
-    createSubmit.textContent = "Submit";
-
-    questionsDiv.appendChild(createSubmit);
-
-    createSubmit.addEventListener("click", function () {
-        var initials = createInput.value;
-
-        if (initials === null) {
-
-            console.log("No value entered!");
-
-        } else {
-            var finalScore = {
-                initials: initials,
-                score: timeRemaining
-            }
-            console.log(finalScore);
-            var allScores = localStorage.getItem("allScores");
-            if (allScores === null) {
-                allScores = [];
-            } else {
-                allScores = JSON.parse(allScores);
-            }
-            allScores.push(finalScore);
-            var newScore = JSON.stringify(allScores);
-            localStorage.setItem("allScores", newScore);
-            // Travels to final page
-            window.location.replace("scores.html");
+    myQuestions.forEach(
+      (currentQuestion, questionNumber) => {
+  
+        const answers = [];
+  
+        for(letter in currentQuestion.answers){
+  
+          answers.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
         }
-    });
+  
+        output.push(
+          `<div class="question"> ${currentQuestion.question} </div>
+          <div class="answers"> ${answers.join('')} </div>`
+        );
+      }
+    );
+  
+    quizContainer.innerHTML = output.join('');
+  }
+  
+  myQuestions.forEach( (currentQuestion, questionNumber) => {
+  });
 
-}
+  const answerContainer = answerContainers[questionNumber];
+const selector = `input[name=question${questionNumber}]:checked`;
+const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+  function showResults(){
+
+    const answerContainers = quizContainer.querySelectorAll('.answers');
+  
+    let numCorrect = 0;
+  
+    myQuestions.forEach( (currentQuestion, questionNumber) => {
+  
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+  
+      if(userAnswer === currentQuestion.correctAnswer){
+        numCorrect++;
+  
+        
+        answerContainers[questionNumber].style.color = 'lightgreen';
+      }
+      else{
+        answerContainers[questionNumber].style.color = 'red';
+      }
+    });
+  
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  }
+  
+if(userAnswer === currentQuestion.correctAnswer){
+    numCorrect++;
+  
+    answerContainers[questionNumber].style.color = 'lightgreen';
+  }
+  else{
+    answerContainers[questionNumber].style.color = 'red';
+  }
+  
+  function showSlide(n) {
+    slides[currentSlide].classList.remove('active-slide');
+    slides[n].classList.add('active-slide');
+    currentSlide = n;
+    if(currentSlide === 0){
+      previousButton.style.display = 'none';
+    }
+    else{
+      previousButton.style.display = 'inline-block';
+    }
+    if(currentSlide === slides.length-1){
+      nextButton.style.display = 'none';
+      submitButton.style.display = 'inline-block';
+    }
+    else{
+      nextButton.style.display = 'inline-block';
+      submitButton.style.display = 'none';
+    }
+  }
+  
+  function showNextSlide() {
+    showSlide(currentSlide + 1);
+  }
+  
+  function showPreviousSlide() {
+    showSlide(currentSlide - 1);
+  }
+  
+  previousButton.addEventListener("click", showPreviousSlide);
+nextButton.addEventListener("click", showNextSlide);

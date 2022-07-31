@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,23 +11,21 @@
 
 <body>
     <h1>Welcome to Matt's Amazing Java Script Game!</h1>
-    <div id="highScore"><a href="scores.html">View Highscores</a></div>
-    <br>
-    <div id="wrapperstyle">
-    <div id="wrapper">
-        <!--timer -->
-        <div id="currentTime"></div>
-        <!-- quiz -->
-        <div id="questionsDiv">
-            <h1>Coding Quiz Challenge</h1>
-            <p>Answer these random trivia questions as quickly as possible before the time runs out. Wrong answers will deduct 10 seconds from your score. Good luck!
-                </p>
-            <ul id="choicesUl"></ul>
-            <!-- Buttons -->
-            <button id="startTime">Start Quiz</button>
-        </div>
-    </div>
-    </div>
+    <div id="quiz"></div>
+    <button id="submit">Submit Quiz</button>
+    <div id="results"></div>
+    
+    <div class="quiz-container">
+        <div id="quiz"></div>
+      </div>
+      <button id="previous">Previous Question</button>
+      <button id="next">Next Question</button>
+      <button id="submit">Submit Quiz</button>
+      <div id="results"></div>
+      
+
+
+
     <script src="assets/js/questions.js"></script>
     <script src="assets/js/scores.js"></script>
    
