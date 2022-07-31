@@ -1,33 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">   
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-    <title>Timed Java Script Quiz Game</title>
-</head>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Javascript Quiz</title>  
+  <link rel="stylesheet" href="assets/css/style.css">  
+  </head>  
+<body>  
+    <h1>Matt's Awesome Javascript Quiz!</h1>
+  <header class="header bg-primary">  
+    <div class="left-title"></div>  
+    <div class="right-title"><span id="tque"></span></div>  
+    <div class="clearfix"></div>  
+   </header>  
+   <div id="highScore">
+    <a href="scores.html">View Highscores</a>
+</div>  
+ <div class="content">  
+ <div class="container-fluid">  
+   <div class="row">  
+     <div class="col-sm-12">  
+       <div id="result" class="quiz-body">  
+       <form name="quizForm" onSubmit="">  
+         <fieldset class="form-group">  
+         <h4><span id="qid">1.</span> <span id="question"></span></h4>  
+         <div class="option-block-container" id="question-options">  
+          </div>  
+          </fieldset>  
+          <button name="previous" id="previous" class="btn btn-success">Previous</button>  
+          &nbsp;  
+          <button name="next" id="next" class="btn btn-success">Next</button>  
+       </form>  
+       </div>  
+     </div> 
+   </div> 
+ </div> 
+ </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>  
+ <script src="assets/js/questions.js"></script>  
+ <script src="assets/js/scores.js"></script>  
 
-<body>
-    <h1>Welcome to Matt's Amazing Java Script Game!</h1>
-    <div id="quiz"></div>
-    <button id="submit">Submit Quiz</button>
-    <div id="results"></div>
-    
-    <div class="quiz-container">
-        <div id="quiz"></div>
-      </div>
-      <button id="previous">Previous Question</button>
-      <button id="next">Next Question</button>
-      <button id="submit">Submit Quiz</button>
-      <div id="results"></div>
-      
-
-
-
-    <script src="assets/js/questions.js"></script>
-    <script src="assets/js/scores.js"></script>
-   
-</body>
-</html>
+</body>  
+</html>  
