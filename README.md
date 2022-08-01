@@ -3,27 +3,23 @@
 ## Description
 My goal was to create a functional, user friendly, JavaScript quiz with clean and proper code. Motivation was to help others learn about Java Script in a fun setting. 
 ## Installation
-This project is special beacuse i learned alot about javascript obisouly.  Questions which we had touched on a little before. Decarling variables. Creating event listeners and buttons. Making wrappers. The main thing i really learned from and had to spend alot of time on was the clock/timer. starting at a certain number, stopping at zero. As well as deducting 10 seconds for wrong answers. Some other things like overflow. Which looks great for loading lots of highscores, using a scroll bar to navigate. i enjoyed using new fonts, and diving back into css. 
-This was also my first project with multiple pages. Easy to do, just had to pay extra attention to my file and folder orginization. 
+
+Quiz renders questions with multiple choise answers. quiz is timed, incorrect answers will deduct 10 seconds from the clock. At the end of the game the user is given a score, as well as the option to enter their initials for the highscore list. 
+
 ## Usage
 
-![alt text](assets/images/Screenshot%20(60).png)
+![alt text](assets/images/1.png)
 
-![alt text](assets/images/Screenshot%20(61).png)
-
-![alt text](assets/images/Screenshot%20(62).png)
-
-![alt text](assets/images/Screenshot%20(63).png)
-
-![alt text](assets/images/Screenshot%20(64).png)
-
-![alt text](assets/images/Screenshot%20(65).png)
 
 ## Credits
+
+code help: 
 
 youtube.com
 
 w3schools.com
+
+Quiz questions: w3schools.com
 
 study group with KU bootcamp classmates, as well as a bootcamp tutor. 
 

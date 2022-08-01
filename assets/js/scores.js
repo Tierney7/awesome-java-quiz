@@ -1,28 +1,21 @@
+var chart = document.getElementById("table")
+myStorage = window.localStorage;
 
-var highScore = document.querySelector("#highScore");
-var clear = document.querySelector("#clear");
-var goBack = document.querySelector("#goBack");
-
-
-clear.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
-});
-
-var allScores = localStorage.getItem("allScores");
-allScores = JSON.parse(allScores);
-
-if (allScores !== null) {
-
-    for (var i = 0; i < allScores.length; i++) {
-
-        var createLi = document.createElement("li");
-        createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-        highScore.appendChild(createLi);
-
-    }
+for (let i = 0; i < myStorage.length; i++) {
+    var key = localStorage.key(i);
+    let storedValue = myStorage.getItem(key)
+    var tr = document.createElement("tr");
+    var td = document.createElement("tb");
+    td.textContent = key ;
+    tr.append(td);
+        td.textContent = storedValue ;
+    tr.append(tb);
+    chart.append(tr);
 }
 
-goBack.addEventListener("click", function () {
-    window.location.replace("./index.html");
-});
+function clearScore(){
+    myStorage.clear();
+    location.reload();
+};
+
+

@@ -1,58 +1,153 @@
-.content {  
-    margin-top: 54px;  
-   }  
-   .header {  
-    padding: 15px;  
-    position: fixed;  
-    top: 0;  
-    width: 100%;  
-    z-index: 9999;  
-   }  
-   .left-title {  
-    width: 80px;  
-    color: black;  
-    font-size: 18px;  
-   text-align: center; 
-   }  
-   .right-title {  
-    width: 150px;  
-    text-align: right;  
-    float: right;  
-    color: black;  
-   }  
-   .quiz-body {  
-    margin-top: 15px;  
-    padding-bottom: 50px;  
-   }  
-   .option-block-container {  
-    margin-top: 20px;  
-    max-width: 420px;  
-   }  
-   .option-block {  
-    padding: 10px;  
-    background: aliceblue;  
-    border: 1px solid #84c5fe;  
-    margin-bottom: 10px;  
-    cursor: pointer;  
-   }  
-   .result-question {  
-    font-weight: bold;  
-   }  
-   .c-wrong {  
-    margin-left: 20px;  
-    color: #ff0000;  
-   }  
-   .c-correct {  
-    margin-left: 20px;  
-    color: green;  
-   }  
-   .last-row {  
-    border-bottom: 1px solid #ccc;  
-    padding-bottom: 25px;  
-    margin-bottom: 25px;  
-   }  
-   .res-header {  
-    border-bottom: 1px solid #ccc;  
-    margin-bottom: 15px;  
-    padding-bottom: 15px;  
-   }  
+body{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+}
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    color: red;
+    text-align: center;
+}
+
+#container{
+    margin: 20px auto;
+    height: 450px;
+    width: 700px;
+    border-radius: 10px;
+    border-style: double;
+    border-color: red;
+    position: relative;
+    background-color: black;
+}
+#start{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    word-break: break-all;
+    width:200px;
+    height:50px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    left:250px;
+    top:150px;
+    background-color: black;
+   color: white;
+}
+#start:hover{
+    border: 6px solid red;
+    color: white;
+}
+#question{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+#choices{
+    text-align: center;
+    padding-top: 10px;
+    
+}
+#answer{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+#submitScore{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#submitScore input{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn{
+    margin-right: 10px;
+    
+}
+.button{
+    color: red;
+    background-color: red;
+}
+
+h3{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#highscore{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    padding-left: 10px;
+}
+#quizShow{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    padding-left: 10px;
+}
+#timer{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    bottom: 20px;
+    padding-left: 10px;
+}
+#highscoreChart{
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+#clearStorage{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+    padding-left: 10px;
+}
+
+.clear {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+th{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: normal;
+}
+tbody{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace
+}
+

@@ -1,195 +1,151 @@
+var container = document.getElementById("container");
+var timer = document.getElementById("timer")
+var begin = document.getElementById("start");
+var quiz = document.getElementById("quiz");
+var answerStatus = document.getElementById("answer")
+var question = document.getElementById("question");
+var choices = document.getElementById("choices");
+var submitForm = document.getElementById("submitScore")
 
- var quiz = {  
-    "JS": [  
-      {  
-        "id": 1,  
-        "question": "Inside which HTML element do we put the JavaScript?",  
-        "options": [  
-          {  
-            "a": "&lt;script&gt;",  
-            "b": "&lt;javascript&gt;",  
-            "c": "&lt;scripting&gt;",  
-            "d": "&lt;js&gt;"  
-          }  
-        ],  
-        "answer": "&lt;script&gt;",  
-        "score": 0,  
-        "status": ""  
-      },  
-      {  
-        "id": 2,  
-        "question": "Where is the correct place to insert a JavaScript?",  
-        "options": [  
-          {  
-            "a": "The &lt;head&gt; section",  
-            "b": "The &lt;body&gt; section",  
-            "c": "Both the &lt;head&gt; section and the &lt;body&gt; section are correct"  
-          }  
-        ],  
-        "answer": "Both the &lt;head&gt; section and the &lt;body&gt; section are correct",  
-        "score": 0,  
-        "status": ""  
-      },  
-      {  
-        "id": 3,  
-        "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",  
-        "options": [  
-          {  
-            "a": "&ltscript href=&quot;xxx.js&quot;>",  
-            "b": "&lt;script name=&quot;xxx.js&quot;&gt;",  
-            "c": "&lt;script src=&quot;xxx.js&quot;&gt;"  
-          }  
-        ],  
-        "answer": "&lt;script src=&quot;xxx.js&quot;&gt;",  
-        "score": 0,  
-        "status": ""  
-      },  
-      {  
-        "id": 4,  
-        "question": "The external JavaScript file must contain the &lt;script&gt; tag.",  
-        "options": [  
-          {  
-            "a": "True",  
-            "b": "False"  
-          }  
-        ],  
-        "answer": "False",  
-        "score": 0,  
-        "status": ""  
-      },  
-     
-    ]  
-  }  
-  var quizApp = function () {  
-    this.score = 0;  
-    this.qno = 1;  
-    this.currentque = 0;  
-    var totalque = quiz.JS.length;  
-    this.displayQuiz = function (cque) {  
-      this.currentque = cque;  
-      if (this.currentque < totalque) {  
-        $("#tque").html(totalque);  
-        $("#previous").attr("disabled", false);  
-        $("#next").attr("disabled", false);  
-        $("#qid").html(quiz.JS[this.currentque].id + '.');  
-        $("#question").html(quiz.JS[this.currentque].question);  
-        $("#question-options").html("");  
-        for (var key in quiz.JS[this.currentque].options[0]) {  
-          if (quiz.JS[this.currentque].options[0].hasOwnProperty(key)) {  
-            $("#question-options").append(  
-              "<div class='form-check option-block'>" +  
-              "<label class='form-check-label'>" +  
-              "<input type='radio' class='form-check-input' name='option'  id='q" + key + "' value='" + quiz.JS[this.currentque].options[0][key] + "'><span id='optionval'>" +  
-              quiz.JS[this.currentque].options[0][key] +  
-              "</span></label>"  
-            );  
-          }  
-        }  
-      }  
-      if (this.currentque <= 0) {  
-        $("#previous").attr("disabled", true);  
-      }  
-      if (this.currentque >= totalque) {  
-        $('#next').attr('disabled', true);  
-        for (var i = 0; i < totalque; i++) {  
-          this.score = this.score + quiz.JS[i].score;  
-        }  
-        return this.showResult(this.score);  
-      }  
-    }  
-    this.showResult = function (scr) {  
-      $("#result").addClass('result');  
-      $("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr + '/' + totalque + "</h1>");  
-      for (var j = 0; j < totalque; j++) {  
-        var res;  
-        if (quiz.JS[j].score == 0) {  
-          res = '<span class="wrong">' + quiz.JS[j].score + '</span><i class="fa fa-remove c-wrong"></i>';  
-        } else {  
-          res = '<span class="correct">' + quiz.JS[j].score + '</span><i class="fa fa-check c-correct"></i>';  
-        }  
-        $("#result").append(  
-          '<div class="result-question"><span>Q ' + quiz.JS[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +  
-          '<div><b>Correct answer:</b> &nbsp;' + quiz.JS[j].answer + '</div>' +  
-          '<div class="last-row"><b>Score:</b> &nbsp;' + res +  
-          '</div>'  
-        );  
-      }  
-    }  
-    this.checkAnswer = function (option) {  
-      var answer = quiz.JS[this.currentque].answer;  
-      option = option.replace(/</g, "&lt;")    
-      option = option.replace(/>/g, "&gt;")  
-      option = option.replace(/"/g, "&quot;")  
-      if (option == quiz.JS[this.currentque].answer) {  
-        if (quiz.JS[this.currentque].score == "") {  
-          quiz.JS[this.currentque].score = 1;  
-          quiz.JS[this.currentque].status = "correct";  
-        }  
-      } else {  
-        quiz.JS[this.currentque].status = "wrong";  
-      }  
-    }  
-    this.changeQuestion = function (cque) {  
-      this.currentque = this.currentque + cque;  
-      this.displayQuiz(this.currentque);  
-    }  
-  }  
-  var jsq = new quizApp();  
-  var selectedopt;  
-  $(document).ready(function () {  
-    jsq.displayQuiz(0);  
-    $('#question-options').on('change', 'input[type=radio][name=option]', function (e) {  
-       
-      $(this).prop("checked", true);  
-      selectedopt = $(this).val();  
-    });  
-  });  
-  $('#next').click(function (e) {  
-    e.preventDefault();  
-    if (selectedopt) {  
-      jsq.checkAnswer(selectedopt);  
-    }  
-    jsq.changeQuestion(1);  
-  });  
-  $('#previous').click(function (e) {  
-    e.preventDefault();  
-    if (selectedopt) {  
-      jsq.checkAnswer(selectedopt);  
-    }  
-    jsq.changeQuestion(-1);  
+var currentStage = 0;
+var correctAnswers = 0;
+var timeLeft = 75;
+var gameOver = false;
 
-   
-    
-  });
 
-  var score = 0;
-  var questionIndex = 0;
+var stages = [
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        choices: ["script", "Javascript", "Scripting", "JS"],
+        answer: "Script",
+    },
+    {
+        question: "Where is the correct place to insert a Javascript?",
+        choices: ["Head", "Body", "Both Sections", "None"],
+        answer: "Both Sections",
+    },
+    {
+        question: "What is the correct syntax for reffering to an external script called 'xxx.js'?",
+        choices: ["href=", "Name=", "Src=", "var="],
+        answer: "Src=",
+    },
+    {
+        question: "Who invented JavaScript?",
+        choices: ["Douglas Crockford", "Sheryl Sandberg", "Brendan Eich", "Tracy McGrady"],
+        answer: "Brendan Eich",
+    },
   
+];
 
-  var currentTime = document.querySelector("#currentTime");
-  var timer = document.querySelector("#startTime");
- 
- 
-  var secondsLeft = 76;
-  var holdInterval = 0;
-  var penalty = 10;
-  var ulCreate = document.createElement("ul");
+function startTimer(){
+    var timer = setInterval(function(){
+        if(gameOver != true && timeLeft>0){
+            document.getElementById("timer").innerHTML = "Time Left: " + timeLeft;
+            timeLeft -= 1;
+        } else {
+            clearInterval(timer);  
+            gameOver = true;
+            if(correctAnswers==0 || timeLeft==0){
+                
+                timeLeft=0;
+            }
+            question.textContent = "";
+            choices.innerHTML = "";
+            answerStatus.textContent = "";
+            renderSubmitScore()
+        }
+    }, 1000);
+}
 
-  timer.addEventListener("click", function () {
 
-      if (holdInterval === 0) {
-          holdInterval = setInterval(function () {
-              secondsLeft--;
-              currentTime.textContent = "Time: " + secondsLeft;
-  
-              if (secondsLeft <= 0) {
-                  clearInterval(holdInterval);
-                  allDone();
-                  currentTime.textContent = "Time is up!";
-              }
-          }, 1000);
-      }
-      
-  });
 
-  
+function  renderSubmitScore(){
+    var h1 = document.createElement("h4");
+    h1.textContent = "Your Score is: " + timeLeft ;
+    submitForm.append(h1);
+    var br = document.createElement("br");
+    var label = document.createElement("label");
+    label.setAttribute("for", "initials");
+    label.textContent = "Enter Your Initials";
+    submitForm.append(label);
+    submitForm.append(br);
+    var br = document.createElement("br");
+    var initials = document.createElement("input");
+    initials.setAttribute("type", "text");
+    initials.setAttribute("id", "initials");
+    initials.setAttribute("name", "initials");
+    initials.required= true;
+    submitForm.append(initials);
+    submitForm.append(br);
+    var submit = document.createElement("input");
+    submit.setAttribute("class", "btn btn-info");
+    submit.setAttribute("value", "Submit");
+    submit.setAttribute("onclick", "saveScore(document.getElementById('initials').value,timeLeft)");
+    submitForm.append(submit);
+    timer.style.display = "none";
+}
+
+
+function saveScore(userInitials, score){
+    var initials = document.getElementById("initials")
+    if(initials.value==""){
+        answerStatus.textContent = "Please enter initials";
+    } else{
+        myStorage = window.localStorage;
+        myStorage.setItem(userInitials, score);
+        window.location.href = "scores.html"
+    }
+}
+
+function renderQuestions(array) {
+    if(array != undefined){
+        var newQuestion = document.createTextNode(array["question"]);
+        question.append(newQuestion);
+        for (i = 0; i < array.choices.length; i++) {
+            var button = document.createElement("button");
+            button.setAttribute("class", "btn btn-info");
+            button.textContent = array.choices[i];
+            button.setAttribute("data-value", array.choices[i]);
+            choices.append(button);
+        }
+    } else {
+        gameOver = true;
+        answerStatus.textContent = "";
+        if(correctAnswers==0){
+            timeLeft=0;
+        }
+    }
+}
+
+begin.addEventListener("click", function () {
+    startTimer();
+    begin.style.display = "none";
+    var questionToDisplay = stages[currentStage];
+    renderQuestions(questionToDisplay);
+});
+
+
+choices.addEventListener("click", function (event) {
+    if (event.target.matches("button")) {
+        var selectedAnswer = event.target.textContent;
+        if(selectedAnswer != stages[currentStage].answer){
+           
+            timeLeft -= 10;
+            answerStatus.textContent = "Incorrect";
+        }else {
+            
+            correctAnswers++;
+            answerStatus.textContent = "Correct!";
+        }
+        setTimeout(function () {
+            currentStage++;
+            var questionToDisplay = stages[currentStage];
+            if(timeLeft<0){
+                timeLeft=0;
+            }
+            question.textContent = "";
+            choices.innerHTML = "";
+            renderQuestions(questionToDisplay);
+        }, 100);
+    }
+});

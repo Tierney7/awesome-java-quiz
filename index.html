@@ -1,54 +1,43 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Javascript Quiz</title>  
-  <link rel="stylesheet" href="assets/css/style.css">  
-  </head>  
-<body>  
-    
-   
-    <h1>Matt's Awesome Javascript Quiz!</h1>
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Matt's Javascript Quiz</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1" />
+       <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+    rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"/>
+</head>
 
-  <header class="header bg-primary">  
-    <div class="left-title"></div>  
-    <div class="right-title"><span id="tque"></span></div>  
-    <div class="clearfix"></div>  
-   </header>  
-   <div id="highScore">
-    <a href="scores.html">View Highscores</a>
-</div>  
-<br>
-
-<div id="currentTime">Time Left:</div>
-<button id="startTime">Start</button>
-<br>
- <div class="content">  
- <div class="container-fluid">  
-   <div class="row">  
-     <div class="col-sm-12">  
-       <div id="result" class="quiz-body">  
-       <form name="quizForm" onSubmit="">  
-         <fieldset class="form-group">  
-         <h4><span id="qid">1.</span> <span id="question"></span></h4>  
-         <div class="option-block-container" id="question-options">  
-          </div>  
-          </fieldset>  
-          <button name="previous" id="previous" class="btn btn-success">Previous</button>  
-          &nbsp;  
-          <button name="next" id="next" class="btn btn-success">Next</button>  
-       </form>  
-       </div>  
-     </div> 
-   </div> 
- </div> 
- </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>  
- <script src="assets/js/questions.js"></script>  
- <script src="assets/js/scores.js"></script>  
-
-</body>  
-</html>  
+<body>
+       <div id="container">
+        <form id="submitScore">
+        </form>
+        <h1>Matt's Javascript Quiz!</h1>
+        <br>
+        <div id="start">Start Quiz</div>
+        <div id="quiz">
+            <div id="question"></div>
+            <div id="choices"></div>
+            <div id="answer"></div>
+        </div>
+        <div id="timer">Time Remaining: </div>       
+        <a id="highscore" href="scores.html" >View Highscore</a>
+    </div>
+    <script src="assets/js/questions.js"></script>
+    <script src="assets/js/scores.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+    ></script>
+    <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"
+    ></script>
+</body>
+</html>
