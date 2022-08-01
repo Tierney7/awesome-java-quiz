@@ -8,7 +8,7 @@ Quiz renders questions with multiple choise answers. quiz is timed, incorrect an
 
 ## Usage
 
-![alt text](assets/images/1.png)
+![alt text](assets/images/Screenshot%20(78).png)
 
 
 ## Credits
