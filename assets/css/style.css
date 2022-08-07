@@ -34,7 +34,7 @@ h1{
     top:150px;
     background-color: black;
    color: white;
-}
+}                                          
 #start:hover{
     border: 6px solid red;
     color: white;
@@ -78,10 +78,8 @@ h1{
     margin-right: 10px;
     
 }
-.button{
-    color: red;
-    background-color: red;
-}
+
+
 
 h3{
     font-family: 'Courier New', Courier, monospace;

@@ -78,7 +78,7 @@ function  renderSubmitScore(){
     submitForm.append(initials);
     submitForm.append(br);
     var submit = document.createElement("input");
-    submit.setAttribute("class", "btn btn-info");
+    submit.setAttribute("class", "btn btn-danger");
     submit.setAttribute("value", "Submit");
     submit.setAttribute("onclick", "saveScore(document.getElementById('initials').value,timeLeft)");
     submitForm.append(submit);
@@ -103,7 +103,7 @@ function renderQuestions(array) {
         question.append(newQuestion);
         for (i = 0; i < array.choices.length; i++) {
             var button = document.createElement("button");
-            button.setAttribute("class", "btn btn-info");
+            button.setAttribute("class", "btn btn-danger");
             button.textContent = array.choices[i];
             button.setAttribute("data-value", array.choices[i]);
             choices.append(button);
